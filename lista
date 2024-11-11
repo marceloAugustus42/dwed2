@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<form action="index.php" method="post">
+    <input type="text" name="valor"/>
+    <input type="submit" value="enviar"/>
+</form>
+
+<?php
+    $find = " "; // espaço vazio
+    $replace = "";
+    $pala = str_replace($find, $replace, $_POST["valor"]);
+    print_r ($pala);
+    $pali = strrev($pala);
+    print_r ($pala);
+    
+    if ($pala == $pali) {
+        echo "É um palindromo";
+    } else {
+        echo "Não é um palindromo";
+    }
+?>
+
+<form action="index.php" method="post">
+    <input type="text" name="a"/>
+    <input type="text" name="b"/>
+    <input type="text" name="c"/>
+    <input type="submit" value="enviar"/>
+</form>
+    
+<?php
+    $bskr = array($_POST["a"],$_POST["b"],$_POST["c"]);
+    var_dump($bskr);
+    echo "<br>";
+    if($bskr[0] != 0){
+        $delta = $bskr[1]**2 - 4*$bskr[0]*$bskr[2];
+        if($delta>0){
+         $raiz1 = (-$bskr[1] + sqrt($delta) )/(2*$bskr[0]);
+         $raiz2 = (-$bskr[1] - sqrt($delta) )/(2*$bskr[0]);
+        }elseif ($delta==0)
+         $raiz1=$raiz2 = -($bskr[1])/(2*$bskr[0]);
+        else{
+         $real = -$b/(2*$bskr[0]);
+         $img =  sqrt(-$delta)/(2*$bskr[0]);
+     
+         $raiz1 =  $real."+i".$img;
+         $raiz2 =  $real."-i".$img;
+        }
+    }else
+        echo "Equação inexistente";
+        echo "<br>";
+   
+    echo "Raiz 1: $raiz1 <br />";
+    echo "Raiz 2: $raiz2 <br />";
+
+    if($bskr[0]>0){
+        echo "Concavidade pra cima";
+    } elseif($bskr[0]<0){
+        echo "Concavidade pra baixo";
+    } elseif($bskr[0]==0) {
+        echo "isso ai nem existe";
+    }
+?>
+
+
+</body>
+</html>
